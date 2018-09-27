@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Telosys Database Repository --><root>
+<tableList databaseId="0" databaseName="MYSQL" databaseProductName="MySQL" generation="2018-09-27 10:30:38">
+<table catalog="student_loans" databaseType="TABLE" javaBean="Accounts" name="accounts" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="account_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="accountId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Account id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="account_type_code" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="accountTypeCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Account type code" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="bank_code" dbNotNull="false" dbPosition="3" dbSize="10" dbTypeName="INT" inputType="number" javaName="bankCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Bank code" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_id" dbNotNull="false" dbPosition="4" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="account_number" dbNotNull="false" dbPosition="5" dbSize="10" dbTypeName="INT" inputType="number" javaName="accountNumber" javaType="java.lang.Integer" jdbcTypeCode="4" label="Account number" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="other_account_details" dbNotNull="false" dbPosition="6" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="otherAccountDetails" javaType="java.lang.String" jdbcTypeCode="12" label="Other account details" maxLength="255" notNull="false" selected="true"/>
+<fk name="fk_accounts_ref_account_types1">
+<fkcol colname="account_type_code" colref="account_type_code" deferrable="7" deleterule="3" sequence="1" tablename="accounts" tableref="ref_account_types" updaterule="3"/>
+</fk>
+<fk name="fk_accounts_ref_banks1">
+<fkcol colname="bank_code" colref="bank_code" deferrable="7" deleterule="3" sequence="1" tablename="accounts" tableref="ref_banks" updaterule="3"/>
+</fk>
+<fk name="fk_accounts_students1">
+<fkcol colname="student_id" colref="student_id" deferrable="7" deleterule="3" sequence="1" tablename="accounts" tableref="students" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_accounts_ref_account_types1" id="LINK_FK_fk_accounts_ref_account_types1_O" inverseSideOf="" javaName="refAccountTypes" javaType="RefAccountTypes" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="accounts" targetEntity="RefAccountTypes" targetTableName="ref_account_types" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="account_type_code" nullable="true" referencedColumnName="account_type_code" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_accounts_students1" id="LINK_FK_fk_accounts_students1_O" inverseSideOf="" javaName="students" javaType="Students" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="accounts" targetEntity="Students" targetTableName="students" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="student_id" nullable="true" referencedColumnName="student_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_accounts_ref_banks1" id="LINK_FK_fk_accounts_ref_banks1_O" inverseSideOf="" javaName="refBanks" javaType="RefBanks" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="accounts" targetEntity="RefBanks" targetTableName="ref_banks" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="bank_code" nullable="true" referencedColumnName="bank_code" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="ActualPayments" name="actual_payments" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="actual_payment_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="actualPaymentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Actual payment id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_id" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student id" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="actual_payment_date" dbNotNull="false" dbPosition="3" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="actualPaymentDate" javaType="java.util.Date" jdbcTypeCode="93" label="Actual payment date" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="actual_payment_amount" dbNotNull="false" dbPosition="4" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="actualPaymentAmount" javaType="java.lang.String" jdbcTypeCode="12" label="Actual payment amount" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="actual_payment_details" dbNotNull="false" dbPosition="5" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="actualPaymentDetails" javaType="java.lang.String" jdbcTypeCode="12" label="Actual payment details" maxLength="255" notNull="false" selected="true"/>
+<fk name="fk_actual_payments_students1">
+<fkcol colname="student_id" colref="student_id" deferrable="7" deleterule="3" sequence="1" tablename="actual_payments" tableref="students" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_actual_payments_students1" id="LINK_FK_fk_actual_payments_students1_O" inverseSideOf="" javaName="students" javaType="Students" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="actual_payments" targetEntity="Students" targetTableName="students" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="student_id" nullable="true" referencedColumnName="student_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="Addresses" name="addresses" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="address_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="addressId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Address id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="line_1" dbNotNull="false" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="line1" javaType="java.lang.String" jdbcTypeCode="12" label="Line 1" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="line_2" dbNotNull="false" dbPosition="3" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="line2" javaType="java.lang.String" jdbcTypeCode="12" label="Line 2" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="line_3" dbNotNull="false" dbPosition="4" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="line3" javaType="java.lang.String" jdbcTypeCode="12" label="Line 3" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="line_4" dbNotNull="false" dbPosition="5" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="line4" javaType="java.lang.String" jdbcTypeCode="12" label="Line 4" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="city" dbNotNull="false" dbPosition="6" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="city" javaType="java.lang.String" jdbcTypeCode="12" label="City" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="zip_postcode" dbNotNull="false" dbPosition="7" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="zipPostcode" javaType="java.lang.String" jdbcTypeCode="12" label="Zip postcode" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="state_province_county" dbNotNull="false" dbPosition="8" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="stateProvinceCounty" javaType="java.lang.String" jdbcTypeCode="12" label="State province county" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="country" dbNotNull="false" dbPosition="9" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="country" javaType="java.lang.String" jdbcTypeCode="12" label="Country" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="other_address_details" dbNotNull="false" dbPosition="10" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="otherAddressDetails" javaType="java.lang.String" jdbcTypeCode="12" label="Other address details" maxLength="255" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_addresses_addresses1" id="LINK_FK_fk_student_addresses_addresses1_I" inverseSideOf="LINK_FK_fk_student_addresses_addresses1_O" javaName="listOfStudentAddresses" javaType="java.util.List" joinTableName="" mappedBy="addresses" optional="" owningSide="false" sourceTableName="addresses" targetEntity="StudentAddresses" targetTableName="student_addresses" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_guarantors_addresses" id="LINK_FK_fk_guarantors_addresses_I" inverseSideOf="LINK_FK_fk_guarantors_addresses_O" javaName="listOfGuarantors" javaType="java.util.List" joinTableName="" mappedBy="addresses" optional="" owningSide="false" sourceTableName="addresses" targetEntity="Guarantors" targetTableName="guarantors" used="true"/>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="Guarantors" name="guarantors" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="guarantor_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="guarantorId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Guarantor id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="address_id" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="addressId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Address id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="guarantor_name" dbNotNull="false" dbPosition="3" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="guarantorName" javaType="java.lang.String" jdbcTypeCode="12" label="Guarantor name" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="guarantor_email" dbNotNull="false" dbPosition="4" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="guarantorEmail" javaType="java.lang.String" jdbcTypeCode="12" label="Guarantor email" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="guarantor_phone" dbNotNull="false" dbPosition="5" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="guarantorPhone" javaType="java.lang.String" jdbcTypeCode="12" label="Guarantor phone" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="other_guarantor_details" dbNotNull="false" dbPosition="6" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="otherGuarantorDetails" javaType="java.lang.String" jdbcTypeCode="12" label="Other guarantor details" maxLength="255" notNull="false" selected="true"/>
+<fk name="fk_guarantors_addresses">
+<fkcol colname="address_id" colref="address_id" deferrable="7" deleterule="3" sequence="1" tablename="guarantors" tableref="addresses" updaterule="3"/>
+</fk>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_loans_guarantors1" id="LINK_FK_fk_student_loans_guarantors1_I" inverseSideOf="LINK_FK_fk_student_loans_guarantors1_O" javaName="listOfStudentLoans" javaType="java.util.List" joinTableName="" mappedBy="guarantors" optional="" owningSide="false" sourceTableName="guarantors" targetEntity="StudentLoans" targetTableName="student_loans" used="true"/>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_guarantors_addresses" id="LINK_FK_fk_guarantors_addresses_O" inverseSideOf="" javaName="addresses" javaType="Addresses" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="guarantors" targetEntity="Addresses" targetTableName="addresses" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="address_id" nullable="true" referencedColumnName="address_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="PlannedPayments" name="planned_payments" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="regular_order_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="regularOrderId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Regular order id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_id" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="payment_status_code" dbNotNull="false" dbPosition="3" dbSize="10" dbTypeName="INT" inputType="number" javaName="paymentStatusCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Payment status code" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="payment_due_date" dbNotNull="false" dbPosition="4" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="paymentDueDate" javaType="java.util.Date" jdbcTypeCode="93" label="Payment due date" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="planned_payment_amount" dbNotNull="false" dbPosition="5" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="plannedPaymentAmount" javaType="java.lang.String" jdbcTypeCode="12" label="Planned payment amount" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="other_payment_detils" dbNotNull="false" dbPosition="6" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="otherPaymentDetils" javaType="java.lang.String" jdbcTypeCode="12" label="Other payment detils" maxLength="255" notNull="false" selected="true"/>
+<fk name="fk_planned_payments_ref_payment_status1">
+<fkcol colname="payment_status_code" colref="payment_status_code" deferrable="7" deleterule="3" sequence="1" tablename="planned_payments" tableref="ref_payment_status" updaterule="3"/>
+</fk>
+<fk name="fk_planned_payments_students1">
+<fkcol colname="student_id" colref="student_id" deferrable="7" deleterule="3" sequence="1" tablename="planned_payments" tableref="students" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_planned_payments_students1" id="LINK_FK_fk_planned_payments_students1_O" inverseSideOf="" javaName="students" javaType="Students" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="planned_payments" targetEntity="Students" targetTableName="students" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="student_id" nullable="true" referencedColumnName="student_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_planned_payments_ref_payment_status1" id="LINK_FK_fk_planned_payments_ref_payment_status1_O" inverseSideOf="" javaName="refPaymentStatus" javaType="RefPaymentStatus" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="planned_payments" targetEntity="RefPaymentStatus" targetTableName="ref_payment_status" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="payment_status_code" nullable="true" referencedColumnName="payment_status_code" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="RefAccountTypes" name="ref_account_types" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="account_type_code" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="accountTypeCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Account type code" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="account_type_description" dbNotNull="false" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="accountTypeDescription" javaType="java.lang.String" jdbcTypeCode="12" label="Account type description" maxLength="255" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_accounts_ref_account_types1" id="LINK_FK_fk_accounts_ref_account_types1_I" inverseSideOf="LINK_FK_fk_accounts_ref_account_types1_O" javaName="listOfAccounts" javaType="java.util.List" joinTableName="" mappedBy="refAccountTypes" optional="" owningSide="false" sourceTableName="ref_account_types" targetEntity="Accounts" targetTableName="accounts" used="true"/>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="RefAddressTypes" name="ref_address_types" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="address_type_code" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="addressTypeCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Address type code" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="address_type_description" dbNotNull="false" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="addressTypeDescription" javaType="java.lang.String" jdbcTypeCode="12" label="Address type description" maxLength="255" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_addresses_ref_address_types1" id="LINK_FK_fk_student_addresses_ref_address_types1_I" inverseSideOf="LINK_FK_fk_student_addresses_ref_address_types1_O" javaName="listOfStudentAddresses" javaType="java.util.List" joinTableName="" mappedBy="refAddressTypes" optional="" owningSide="false" sourceTableName="ref_address_types" targetEntity="StudentAddresses" targetTableName="student_addresses" used="true"/>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="RefBanks" name="ref_banks" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="bank_code" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="bankCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Bank code" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="bank_name" dbNotNull="false" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="bankName" javaType="java.lang.String" jdbcTypeCode="12" label="Bank name" maxLength="255" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_accounts_ref_banks1" id="LINK_FK_fk_accounts_ref_banks1_I" inverseSideOf="LINK_FK_fk_accounts_ref_banks1_O" javaName="listOfAccounts" javaType="java.util.List" joinTableName="" mappedBy="refBanks" optional="" owningSide="false" sourceTableName="ref_banks" targetEntity="Accounts" targetTableName="accounts" used="true"/>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="RefLoanStatus" name="ref_loan_status" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="loan_status_code" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="loanStatusCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Loan status code" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="loan_status_description" dbNotNull="false" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="loanStatusDescription" javaType="java.lang.String" jdbcTypeCode="12" label="Loan status description" maxLength="255" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_loans_ref_loan_status1" id="LINK_FK_fk_student_loans_ref_loan_status1_I" inverseSideOf="LINK_FK_fk_student_loans_ref_loan_status1_O" javaName="listOfStudentLoans" javaType="java.util.List" joinTableName="" mappedBy="refLoanStatus" optional="" owningSide="false" sourceTableName="ref_loan_status" targetEntity="StudentLoans" targetTableName="student_loans" used="true"/>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="RefPaymentStatus" name="ref_payment_status" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="payment_status_code" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="paymentStatusCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Payment status code" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="payment_status_description" dbNotNull="false" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="paymentStatusDescription" javaType="java.lang.String" jdbcTypeCode="12" label="Payment status description" maxLength="255" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_planned_payments_ref_payment_status1" id="LINK_FK_fk_planned_payments_ref_payment_status1_I" inverseSideOf="LINK_FK_fk_planned_payments_ref_payment_status1_O" javaName="listOfPlannedPayments" javaType="java.util.List" joinTableName="" mappedBy="refPaymentStatus" optional="" owningSide="false" sourceTableName="ref_payment_status" targetEntity="PlannedPayments" targetTableName="planned_payments" used="true"/>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="StandardLoans" name="standard_loans" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="standard_loan_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="standardLoanId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Standard loan id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="standard_loan_name" dbNotNull="false" dbPosition="2" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="standardLoanName" javaType="java.lang.String" jdbcTypeCode="12" label="Standard loan name" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="standard_loan_min_amount" dbNotNull="false" dbPosition="3" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="standardLoanMinAmount" javaType="java.lang.String" jdbcTypeCode="12" label="Standard loan min amount" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="standard_loan_max_amount" dbNotNull="false" dbPosition="4" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="standardLoanMaxAmount" javaType="java.lang.String" jdbcTypeCode="12" label="Standard loan max amount" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="standard_loan_period" dbNotNull="false" dbPosition="5" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="standardLoanPeriod" javaType="java.lang.String" jdbcTypeCode="12" label="Standard loan period" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="standard_loan_description" dbNotNull="false" dbPosition="6" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="standardLoanDescription" javaType="java.lang.String" jdbcTypeCode="12" label="Standard loan description" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="standard_loan_details" dbNotNull="false" dbPosition="7" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="standardLoanDetails" javaType="java.lang.String" jdbcTypeCode="12" label="Standard loan details" maxLength="255" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_loans_standard_loans1" id="LINK_FK_fk_student_loans_standard_loans1_I" inverseSideOf="LINK_FK_fk_student_loans_standard_loans1_O" javaName="listOfStudentLoans" javaType="java.util.List" joinTableName="" mappedBy="standardLoans" optional="" owningSide="false" sourceTableName="standard_loans" targetEntity="StudentLoans" targetTableName="student_loans" used="true"/>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="StudentAddresses" name="student_addresses" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="student_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="address_id" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="addressId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Address id" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="date_from" dbNotNull="false" dbPosition="3" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="dateFrom" javaType="java.util.Date" jdbcTypeCode="93" label="Date from" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="address_type_code" dbNotNull="false" dbPosition="4" dbSize="10" dbTypeName="INT" inputType="number" javaName="addressTypeCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Address type code" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="date_to" dbNotNull="false" dbPosition="5" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="dateTo" javaType="java.util.Date" jdbcTypeCode="93" label="Date to" notNull="false" selected="true"/>
+<fk name="fk_student_addresses_addresses1">
+<fkcol colname="address_id" colref="address_id" deferrable="7" deleterule="3" sequence="1" tablename="student_addresses" tableref="addresses" updaterule="3"/>
+</fk>
+<fk name="fk_student_addresses_ref_address_types1">
+<fkcol colname="address_type_code" colref="address_type_code" deferrable="7" deleterule="3" sequence="1" tablename="student_addresses" tableref="ref_address_types" updaterule="3"/>
+</fk>
+<fk name="fk_student_addresses_students1">
+<fkcol colname="student_id" colref="student_id" deferrable="7" deleterule="3" sequence="1" tablename="student_addresses" tableref="students" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_addresses_ref_address_types1" id="LINK_FK_fk_student_addresses_ref_address_types1_O" inverseSideOf="" javaName="refAddressTypes" javaType="RefAddressTypes" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="student_addresses" targetEntity="RefAddressTypes" targetTableName="ref_address_types" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="address_type_code" nullable="true" referencedColumnName="address_type_code" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_addresses_addresses1" id="LINK_FK_fk_student_addresses_addresses1_O" inverseSideOf="" javaName="addresses" javaType="Addresses" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="student_addresses" targetEntity="Addresses" targetTableName="addresses" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="address_id" nullable="true" referencedColumnName="address_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_addresses_students1" id="LINK_FK_fk_student_addresses_students1_O" inverseSideOf="" javaName="students" javaType="Students" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="student_addresses" targetEntity="Students" targetTableName="students" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="student_id" nullable="true" referencedColumnName="student_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="StudentLoans" name="student_loans" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="student_loan_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentLoanId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student loan id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="guarator_id" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="guaratorId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Guarator id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="loan_status_code" dbNotNull="false" dbPosition="3" dbSize="10" dbTypeName="INT" inputType="number" javaName="loanStatusCode" javaType="java.lang.Integer" jdbcTypeCode="4" label="Loan status code" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_id" dbNotNull="false" dbPosition="4" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="standard_loan_id" dbNotNull="false" dbPosition="5" dbSize="10" dbTypeName="INT" inputType="number" javaName="standardLoanId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Standard loan id" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_loan_amount" dbNotNull="false" dbPosition="6" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="studentLoanAmount" javaType="java.lang.String" jdbcTypeCode="12" label="Student loan amount" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_loan_period" dbNotNull="false" dbPosition="7" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="studentLoanPeriod" javaType="java.lang.String" jdbcTypeCode="12" label="Student loan period" maxLength="255" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="fist_repayment_date" dbNotNull="false" dbPosition="8" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="fistRepaymentDate" javaType="java.util.Date" jdbcTypeCode="93" label="Fist repayment date" notNull="false" selected="true"/>
+<column dateType="DT" dbComment="" dbDefaultValue="" dbName="last_payment_date" dbNotNull="false" dbPosition="9" dbSize="19" dbTypeName="DATETIME" inputType="" javaName="lastPaymentDate" javaType="java.util.Date" jdbcTypeCode="93" label="Last payment date" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_loan_comments" dbNotNull="false" dbPosition="10" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="studentLoanComments" javaType="java.lang.String" jdbcTypeCode="12" label="Student loan comments" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_loan_details" dbNotNull="false" dbPosition="11" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="studentLoanDetails" javaType="java.lang.String" jdbcTypeCode="12" label="Student loan details" maxLength="255" notNull="false" selected="true"/>
+<fk name="fk_student_loans_guarantors1">
+<fkcol colname="guarator_id" colref="guarantor_id" deferrable="7" deleterule="3" sequence="1" tablename="student_loans" tableref="guarantors" updaterule="3"/>
+</fk>
+<fk name="fk_student_loans_ref_loan_status1">
+<fkcol colname="loan_status_code" colref="loan_status_code" deferrable="7" deleterule="3" sequence="1" tablename="student_loans" tableref="ref_loan_status" updaterule="3"/>
+</fk>
+<fk name="fk_student_loans_standard_loans1">
+<fkcol colname="student_loan_id" colref="standard_loan_id" deferrable="7" deleterule="3" sequence="1" tablename="student_loans" tableref="standard_loans" updaterule="3"/>
+</fk>
+<fk name="fk_student_loans_students1">
+<fkcol colname="student_id" colref="student_id" deferrable="7" deleterule="3" sequence="1" tablename="student_loans" tableref="students" updaterule="3"/>
+</fk>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_loans_standard_loans1" id="LINK_FK_fk_student_loans_standard_loans1_O" inverseSideOf="" javaName="standardLoans" javaType="StandardLoans" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="student_loans" targetEntity="StandardLoans" targetTableName="standard_loans" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="student_loan_id" nullable="true" referencedColumnName="standard_loan_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_loans_ref_loan_status1" id="LINK_FK_fk_student_loans_ref_loan_status1_O" inverseSideOf="" javaName="refLoanStatus" javaType="RefLoanStatus" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="student_loans" targetEntity="RefLoanStatus" targetTableName="ref_loan_status" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="loan_status_code" nullable="true" referencedColumnName="loan_status_code" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_loans_guarantors1" id="LINK_FK_fk_student_loans_guarantors1_O" inverseSideOf="" javaName="guarantors" javaType="Guarantors" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="student_loans" targetEntity="Guarantors" targetTableName="guarantors" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="guarator_id" nullable="true" referencedColumnName="guarantor_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+<link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_loans_students1" id="LINK_FK_fk_student_loans_students1_O" inverseSideOf="" javaName="students" javaType="Students" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="student_loans" targetEntity="Students" targetTableName="students" used="true">
+<joinColumns>
+<joinColumn insertable="false" name="student_id" nullable="true" referencedColumnName="student_id" unique="false" updatable="false"/>
+</joinColumns>
+</link>
+</table>
+<table catalog="student_loans" databaseType="TABLE" javaBean="Students" name="students" schema="">
+<column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="student_id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student id" notNull="true" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_name" dbNotNull="false" dbPosition="2" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentName" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student name" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_phone" dbNotNull="false" dbPosition="3" dbSize="10" dbTypeName="INT" inputType="number" javaName="studentPhone" javaType="java.lang.Integer" jdbcTypeCode="4" label="Student phone" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="student_email" dbNotNull="false" dbPosition="4" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="studentEmail" javaType="java.lang.String" jdbcTypeCode="12" label="Student email" maxLength="255" notNull="false" selected="true"/>
+<column dbComment="" dbDefaultValue="" dbName="other_student_details" dbNotNull="false" dbPosition="5" dbSize="255" dbTypeName="VARCHAR" inputType="text" javaName="otherStudentDetails" javaType="java.lang.String" jdbcTypeCode="12" label="Other student details" maxLength="255" notNull="false" selected="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_accounts_students1" id="LINK_FK_fk_accounts_students1_I" inverseSideOf="LINK_FK_fk_accounts_students1_O" javaName="listOfAccounts" javaType="java.util.List" joinTableName="" mappedBy="students" optional="" owningSide="false" sourceTableName="students" targetEntity="Accounts" targetTableName="accounts" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_planned_payments_students1" id="LINK_FK_fk_planned_payments_students1_I" inverseSideOf="LINK_FK_fk_planned_payments_students1_O" javaName="listOfPlannedPayments" javaType="java.util.List" joinTableName="" mappedBy="students" optional="" owningSide="false" sourceTableName="students" targetEntity="PlannedPayments" targetTableName="planned_payments" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_addresses_students1" id="LINK_FK_fk_student_addresses_students1_I" inverseSideOf="LINK_FK_fk_student_addresses_students1_O" javaName="listOfStudentAddresses" javaType="java.util.List" joinTableName="" mappedBy="students" optional="" owningSide="false" sourceTableName="students" targetEntity="StudentAddresses" targetTableName="student_addresses" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_student_loans_students1" id="LINK_FK_fk_student_loans_students1_I" inverseSideOf="LINK_FK_fk_student_loans_students1_O" javaName="listOfStudentLoans" javaType="java.util.List" joinTableName="" mappedBy="students" optional="" owningSide="false" sourceTableName="students" targetEntity="StudentLoans" targetTableName="student_loans" used="true"/>
+<link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_actual_payments_students1" id="LINK_FK_fk_actual_payments_students1_I" inverseSideOf="LINK_FK_fk_actual_payments_students1_O" javaName="listOfActualPayments" javaType="java.util.List" joinTableName="" mappedBy="students" optional="" owningSide="false" sourceTableName="students" targetEntity="ActualPayments" targetTableName="actual_payments" used="true"/>
+</table>
+</tableList>
+</root>
