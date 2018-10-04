@@ -23,6 +23,8 @@ import ${pack_entity}.${entityKeyClass};
 import ${pack_repository}.${repositoryClass};
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 @Service
 @Transactional
@@ -33,7 +35,7 @@ public class $serviceClass implements $serviceInterface {
 
 	@Override
 	public $entityClass getOne($keyArgsListWrapperType) {
-		return ${repositoryInstance}.getOne($keyArgsList);
+		return ${repositoryInstance}.findById($keyArgsList).get();
 	}
 
 	@Override
@@ -80,5 +82,9 @@ public class $serviceClass implements $serviceInterface {
 		return ${repositoryInstance}.findAll();
 	}
 
+	@Override
+	public Page<$entityClass> findAll(Pageable pageable) {
+		return ${repositoryInstance}.findAll(pageable);
+	}
 }
 
